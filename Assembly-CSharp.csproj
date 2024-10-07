@@ -74,6 +74,7 @@
     <Compile Include="Assets\Scripts\UI\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Utils\ClientNetworkTransform.cs" />
     <Compile Include="Assets\Scripts\UI\Leaderboard\LeaderboardEntitiyState.cs" />
+    <Compile Include="Assets\Scripts\Utils\ParticleAligner.cs" />
     <Compile Include="Assets\Scripts\Core\Coin\RespawningCoin.cs" />
     <Compile Include="Assets\Scripts\UI\NameSelector.cs" />
     <Compile Include="Assets\Scripts\Utils\DestroySelfOnContact.cs" />
