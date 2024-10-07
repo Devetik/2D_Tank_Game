@@ -1,6 +1,7 @@
 /Library
 /results
 /Temp
+/Logs
 /Assets/Resouces/*
 DevetikENV/*
 !DevetikENV/Lib/

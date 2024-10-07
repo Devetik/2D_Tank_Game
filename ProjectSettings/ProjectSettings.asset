@@ -764,7 +764,7 @@ PlayerSettings:
   cloudProjectId: b33c7ea5-0f97-4135-af3a-de93db327657
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 2D_Vessel_Game
+  projectName: 2D_Tank_Game
   organizationId: devetik
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0

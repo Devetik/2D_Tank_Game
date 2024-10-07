@@ -25,7 +25,7 @@ public class NetworkClient : IDisposable
         Disconnect();
     }
 
-    internal void Disconnect()
+    public void Disconnect()
     {
         if(SceneManager.GetActiveScene().name != MenuSceneName )
         {

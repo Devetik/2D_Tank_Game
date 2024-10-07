@@ -20,7 +20,7 @@ public class RespawnHandler : NetworkBehaviour
         }
 
         TankPlayer.OnPlayerSpawned += HandlePlayerSpawned;
-        TankPlayer.OnPlayerSpawned += HandlePlayerDespawned;
+        TankPlayer.OnPlayerDespawned += HandlePlayerDespawned;
     }
 
     public override void OnNetworkDespawn()
@@ -28,7 +28,7 @@ public class RespawnHandler : NetworkBehaviour
         if(!IsServer) {return;}
 
         TankPlayer.OnPlayerSpawned -= HandlePlayerSpawned;
-        TankPlayer.OnPlayerSpawned -= HandlePlayerDespawned;
+        TankPlayer.OnPlayerDespawned -= HandlePlayerDespawned;
     }
 
     private void HandlePlayerSpawned(TankPlayer player)

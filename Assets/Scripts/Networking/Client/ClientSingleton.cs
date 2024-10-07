@@ -40,6 +40,6 @@ public class ClientSingleton : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameManager.Dispose();
+        GameManager?.Dispose();
     }
 }
