@@ -22,15 +22,14 @@ public class ServerGameManager : IDisposable
     private MatchplayBackfiller backfiller;
     private MultiplayAllocationService multiplayAllocationService;
     public NetworkServer NetworkServer { get; private set; }
-    private const string GameSceneName = "Game";
 
-    public ServerGameManager(string serverIp, int serverPort, int queryPort, NetworkManager manager)
+    public ServerGameManager(string serverIp, int serverPort, int queryPort, NetworkManager manager, NetworkObject playerPrefab)
     {
         this.serverIp = serverIp;
         this.serverPort = serverPort;
         this.queryPort = queryPort;
 
-        NetworkServer = new NetworkServer(manager);
+        NetworkServer = new NetworkServer(manager, playerPrefab);
         multiplayAllocationService = new MultiplayAllocationService();
     }
 
@@ -64,8 +63,6 @@ public class ServerGameManager : IDisposable
             Debug.LogError("Failed to open connection");
             return;
         }
-
-        NetworkManager.Singleton.SceneManager.LoadScene(GameSceneName, UnityEngine.SceneManagement.LoadSceneMode.Single);
     }
 
     private async Task<MatchmakingResults> GetMatchmakerPayload()

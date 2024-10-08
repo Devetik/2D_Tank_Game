@@ -4,6 +4,7 @@ using Unity.Services.Matchmaker.Models;
 using Unity.Netcode;
 using UnityEngine;
 using System;
+using UnityEngine.EventSystems;
 
 public class ProjectileLauncher : NetworkBehaviour
 {
@@ -26,6 +27,7 @@ public class ProjectileLauncher : NetworkBehaviour
     private bool shouldFire;
     private float timer;
     private float muzzleFlashTimer;
+    private bool isPointerOverUi;
 
     public override void OnNetworkSpawn()
     {
@@ -54,6 +56,7 @@ public class ProjectileLauncher : NetworkBehaviour
         }
 
         if(!IsOwner)    {return;}
+        isPointerOverUi = EventSystem.current.IsPointerOverGameObject();
         if(timer > 0)
         {
             timer -= Time.deltaTime;
@@ -72,6 +75,11 @@ public class ProjectileLauncher : NetworkBehaviour
 
     private void HandlePrimaryFire(bool shouldFire)
     {
+        if(shouldFire)
+        {
+            if(isPointerOverUi) {return;}
+        }
+        
         this.shouldFire = shouldFire;
     }
 
