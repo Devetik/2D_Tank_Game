@@ -17,6 +17,7 @@ public class ProjectileLauncher : NetworkBehaviour
 
     [SerializeField] private GameObject muzzleFlash; 
     [SerializeField] private Collider2D playerCollider;
+    [SerializeField] private PlayerSound playerSound;
 
     [Header("Settings")]
     [SerializeField] private float projectilSpeed;
@@ -70,6 +71,8 @@ public class ProjectileLauncher : NetworkBehaviour
 
         SpawnDummyProjectile(projectilSpawnPoint.position, projectilSpawnPoint.up);
 
+        //playerSound.ShootCanon();
+
         timer = 1 / fireRare;
     }
 
@@ -79,7 +82,7 @@ public class ProjectileLauncher : NetworkBehaviour
         {
             if(isPointerOverUi) {return;}
         }
-        
+
         this.shouldFire = shouldFire;
     }
 
@@ -106,6 +109,8 @@ public class ProjectileLauncher : NetworkBehaviour
             rb.velocity = rb.transform.up * projectilSpeed;
         }
 
+        PlayCannonSoundClientRpc(spawnPos);
+
         SpawnDummyProjectileClientRpc(spawnPos, direction);
     }
 
@@ -115,6 +120,12 @@ public class ProjectileLauncher : NetworkBehaviour
         if(IsOwner){return;}
 
         SpawnDummyProjectile(spawnPos, direction);
+    }
+    [ClientRpc]
+    private void PlayCannonSoundClientRpc(Vector3 position)
+    {
+        //playerSound.transform.position = position;
+        playerSound.ShootCanon(position);
     }
 
     private void SpawnDummyProjectile(Vector3 spawnPos, Vector3 direction)
